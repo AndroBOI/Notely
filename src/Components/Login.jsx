@@ -2,7 +2,7 @@ import React from 'react'
 import centerImage from '../assets/Group 82 1.png'
 import  '../styles/Login.css'
 import { useState, useEffect } from 'react'
-
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [activeBullet, setActiveBullet] = useState(1)
@@ -33,10 +33,12 @@ export default function Login() {
   return (
     <div className='wrapper'>
         <div className="app-title">Notely</div>
-        <div className="center-image"><img src={centerImage} alt="" /></div>
-        <div className="bold-text">{bulletTexts[activeBullet].boldText}</div>
-        <div className="text">{bulletTexts[activeBullet].smallText}</div>
-        <div className='bullet-point-wrapper'>
+        
+        <div className="texts">
+        <div className="center-image"><img className='img' src={centerImage} alt="" /></div>
+          <div className="bold-text">{bulletTexts[activeBullet].boldText}</div>
+          <div className="text">{bulletTexts[activeBullet].smallText}</div>
+          <div className='bullet-point-wrapper'>
             {
               Object.keys(bulletTexts).map((key) => (
                 <div
@@ -47,6 +49,9 @@ export default function Login() {
               ))
             }
         </div>
+        </div>
+        <Link className='link' to="signup"> <button className="get-started">GET STARTED</button></Link>
+        <Link className="sign-in">Already have na account?</Link>
     </div>
   )
 }

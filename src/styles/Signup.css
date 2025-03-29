@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 800px;
+    text-align: center;
+    background-color: #F8EEE2;
+    font-family: Arial, sans-serif;
+    width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+  }
+  
+.texts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.inputs {
+    width: 100%;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+
+input {
+    width: 100%;    
+    height: 40px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    outline: none;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+input.error-input {
+    border: 1px solid #d9534f; 
+    background-color: #fff5f5; 
+}
+  
+.err-msg {
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 0.7rem;
+}
+
+
+.link {
+    width: 100%;
+}
+
+.create-account {
+    border: none;
+    background-color: #d9614c;
+    color: white;
+    font-weight: 900;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    border-radius: 10px;
+  }

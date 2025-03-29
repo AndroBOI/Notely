@@ -4,13 +4,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: space-between;
+    height: 800px;
     text-align: center;
     background-color: #F8EEE2;
     font-family: Arial, sans-serif;
+    width: 400px;
+    padding: 40px;
+    border-radius: 20px;
   }
   
+.texts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
   .app-title {
     font-size: 2rem;
     font-weight: bold;
@@ -28,8 +38,9 @@
   .bold-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #222;
+    color: #333333;
     margin-bottom: 0.5rem;
+    font-weight: 900;
   }
   
   .text {
@@ -37,6 +48,7 @@
     color: #555;
     max-width: 400px;
     margin-bottom: 1.5rem;
+    font-weight: 800;
   }
 
   .bullet-point-wrapper {
@@ -60,4 +72,33 @@
     background-color: #d9614c;
     transform: scale(1.5);
 }
-  
+
+.get-started {
+  height: 90px;
+  border: none;
+  background-color: #d9614c;
+  color: white;
+  font-weight: 900;
+  width: 100%;
+  font-size: 1.6rem;
+  letter-spacing: 5px;
+  border-radius: 15px;
+}
+
+.sign-in {
+  font-weight: 900;
+  color: #d9614c;
+  font-size: 1.1rem;
+  letter-spacing: 1.1px;
+}
+
+.get-started:hover {
+  background-color: #e8a797;
+}
+.sign-in:hover {
+  color: #e8a797;
+}
+
+.center-image img {
+  width: 300px;
+}
