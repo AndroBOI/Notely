@@ -1,0 +1,40 @@
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-home {
+    font-weight: 800;
+}
+
+.textarea1 {
+    height: 5%;
+    width: 100%;
+    background-color: #F8EEE2;
+    border: none;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    padding: 10px;
+    font-weight: 700;
+}
+
+
+.textarea2 {
+    margin-top: 0.1rem;
+    height: 90%;
+    width: 100%;
+    background-color: #F8EEE2;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+textarea {
+    overflow: hidden;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+}

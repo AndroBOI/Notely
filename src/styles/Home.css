@@ -1,0 +1,42 @@
+.create-note {
+    margin-bottom: 2rem;
+}
+
+
+.wrapper-home {
+    
+}
+.create-note-texts {
+    margin-bottom: 2rem;
+}
+
+.create-btn {
+    margin-bottom: 2rem;
+}
+
+.note-wrapper {
+    width: 100%;
+    column-count: 2; /* Creates two columns */
+    column-gap: 15px; /* Space between columns */
+    height: 100%;
+}
+
+.note-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    display: inline-block; /* Important for column layout */
+    width: 100%;
+    break-inside: avoid; /* Prevents content from splitting */
+    margin-bottom: 15px; /* Adds spacing between notes */
+}
+
+p {
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}

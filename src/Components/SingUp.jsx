@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Signup.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Eye, EyeOff } from 'lucide-react'
 export default function Signup() {
 
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false)
   const [err, setErr] = useState({});
   const [values, setValues] = useState({
     fullName: "",
@@ -12,7 +13,11 @@ export default function Signup() {
     password: "",
   });
 
-  // Validation Function
+  const showPass = (e) => {
+    e.preventDefault()
+    setShowPassword(!showPassword)
+  }
+
   const validate = (name, value) => {
     let errMsg = "";
 
@@ -28,7 +33,8 @@ export default function Signup() {
   };
 
 
-  const check = (e) => {  
+  const check = async (e) => {
+    e.preventDefault()
     let newErr = {}
     Object.keys(values).forEach((type) => {
       let value = values[type]
@@ -42,18 +48,32 @@ export default function Signup() {
         newErrMsg = "Password must be at least 6 characters";
       }
 
-      if(newErrMsg) {
+      if (newErrMsg) {
         newErr[type] = newErrMsg
       }
     })
 
     setErr(newErr)
-    if(Object.keys(newErr).length === 0) {
-      navigate("/");
+    if (Object.keys(newErr).length === 0) {
+      try {
+        const response = await fetch("http://localhost:3000/add-profile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values)
+        })
+        const data = await response.json();
+        setValues({ fullName: "", email: "", password: "" })
+
+        navigate("/login");
+
+      } catch (err) {
+        console.error("Error:", err)
+      }
+
     }
   }
 
-  // Handle Input Change & Validate in Real-time
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues((prevValue) => ({ ...prevValue, [name]: value }));
@@ -67,21 +87,28 @@ export default function Signup() {
         <span className="bold-text">Create a free account</span>
         Join Notely for free. Create and share unlimited notes with your friends.
       </div>
-      
+
       <form className="inputs">
         {["fullName", "email", "password"].map((type) => (
           <div key={type} className="input-wrapper">
             <label htmlFor={type}>
               {type.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase()).trim()}
             </label>
-            <input
-              type={type === "password" ? "password" : "text"}
-              id={type}
-              name={type}
-              value={values[type]}
-              onChange={handleChange}
-              className={err[type] ? "error-input" : ""}
-            />
+            <div className="input-container">
+              <input
+                type={type === "password" && showPassword ? "text" : type}
+                id={type}
+                name={type}
+                value={values[type]}
+                onChange={handleChange}
+                className={err[type] ? "error-input" : ""}
+              />
+              {
+                type === 'password' && (
+                  <button className="showIcon" onClick={showPass}>{showPassword ? <Eye className="icon" /> : <EyeOff  className="icon" />}</button>
+                )
+              }
+            </div>
             {err[type] && <p className="err-msg">{err[type]}</p>}
           </div>
         ))}
@@ -89,7 +116,7 @@ export default function Signup() {
 
       <button onClick={check} className="create-account">Create Account</button>
 
-      <Link to="/login" className="sign-in">Already have an account?</Link>
+      <Link to="/login" className="sign-in link">Already have an account?</Link>
     </div>
   );
 }
